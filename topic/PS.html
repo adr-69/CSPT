@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>PEN-TEST | ADRIAN</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>Port Scanner</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is a Port Scanner?</h2>
+    <h2>
+      A Port Scanner is a tool used in ethical hacking and penetration testing to detect which ports are open on a target machine or server. 
+      These open ports may indicate potential entry points if services running behind them are vulnerable.
+    </h2>
+    <br />
+    <h2>Why is a Port Scanner Important?</h2>
+    <h2>Port scanning helps security professionals:</h2>
+    <ul class="full-list">
+      <li>Identify exposed services (e.g., SSH, FTP, HTTP)</li>
+      <li>Detect unnecessary or misconfigured open ports</li>
+      <li>Assess the attack surface before deeper testing</li>
+      <li>Understand which services may be vulnerable</li>
+    </ul>
+    <h2>
+      Knowing which ports are open is a critical first step before vulnerability scanning or exploit development.
+    </h2>
+
+    <h2>Python Code: Port Scanner</h2>
+    <div class="box-code">
+<pre><code>
+import socket
+
+# CHANGE IP TO YOUR TARGET
+target = "192.168.8.1" #Here
+start_port = 1
+end_port = 100 #SCAN OPEN PORTS 1 - 100
+
+print(f"\nScanning {target} from port {start_port} to {end_port}...\n")
+
+found_open = False
+
+for port in range(start_port, end_port + 1):
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.settimeout(0.5)
+
+result = sock.connect_ex((target, port))
+if result == 0:
+print(f"[+] Port {port} is open")
+found_open = True
+sock.close()
+
+if not found_open:
+print("No open ports found.")
+</code></pre>
+    </div>
+    <button class="downloadBTN"><a href="../SCRIPT/PS.py">DOWNLOAD CODE</a></button>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>

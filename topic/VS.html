@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Vulnerability Scanner</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>Vulnerability Scanner</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is a Vulnerability Scanner?</h2>
+    <h2>A Vulnerability Scanner is a tool used in cybersecurity to detect security weaknesses in systems, services, or software. It identifies known vulnerabilities on open ports and services that could be exploited by attackers.</h2>
+    <br />
+    <h2>Why is Vulnerability Scanning Important in Ethical Hacking and Penetration Testing?</h2>
+    <h2>Vulnerability scanning is a critical step because it:</h2>
+
+    <ul class="full-list">
+      <li>Helps discover weak or outdated services running on a system</li>
+      <li>Highlights high-risk targets (e.g., SMB vulnerabilities like EternalBlue)</li>
+      <li>Assists ethical hackers in prioritizing exploitation paths</li>
+      <li>Enables early detection and patching of exploitable issues</li>
+    </ul>
+
+    <h2>This scanning helps simulate what an attacker might try so security flaws can be fixed before they’re abused.</h2>
+    <h2>Python Code: Vulnerability Scanner</h2>
+    <div class="box-code">
+<pre><code>
+import socket
+
+#CHANGE IP TO WANT SCAN VULNERABILITY 
+target = "192.168.1.1" 
+start_port = 1
+end_port = 100
+
+vuln_ports = {
+    21: "FTP - Often vulnerable to anonymous login",
+    22: "SSH - Weak passwords or outdated versions",
+    23: "Telnet - Unencrypted, insecure",
+    80: "HTTP - Might be running outdated web server",
+    139: "NetBIOS - Can be exploited in some Windows configs",
+    445: "SMB - EternalBlue (WannaCry exploit)",
+    3306: "MySQL - Might allow remote login with weak creds"
+}
+
+print(f"\nScanning {target} for vulnerable services...\n")
+found_vuln = False
+
+for port in range(start_port, end_port + 1):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(0.5)
+
+    result = sock.connect_ex((target, port))
+    if result == 0:
+        service = vuln_ports.get(port, None)
+        if service:
+            print(f"[!] Vulnerable Service Detected on port {port}: {service}")
+            found_vuln = True
+        else:
+            print(f"[+] Port {port} is open (no known vuln in list)")
+    sock.close()
+
+if not found_vuln:
+    print("\nNo known vulnerable services found (based on static list).")
+    
+    
+    
+</code></pre>
+    </div>
+    <button class="downloadBTN"><a href="../SCRIPT/VS.py">DOWNLOAD CODE</a></button>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>

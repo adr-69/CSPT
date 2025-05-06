@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>PEN-TEST | ADRIAN</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>Service Enumeration</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is Service Enumeration?</h2>
+    <h2>Service Enumeration is the process of identifying which services are running on open ports of a target machine. It’s crucial in ethical hacking and penetration testing because each open port and service can potentially have known vulnerabilities that attackers could exploit.</h2>
+    <br />
+    <h2>Why is Service Enumeration Important in Ethical Hacking and Penetration Testing?</h2>
+    <h2>Service Enumeration helps ethical hackers:</h2>
+
+    <ul class="full-list">
+      <li>Identify which services (e.g., HTTP, FTP, SSH) are active</li>
+      <li>Understand what version or type of software is running</li>
+      <li>Find potential misconfigurations or vulnerable software</li>
+      <li>Prioritize targets for further scanning or exploitation</li>
+    </ul>
+
+    <h2>It adds context to port scanning by telling what's running behind each open port.</h2>
+    <h2>Python Code: Service Enumeration</h2>
+    <div class="box-code">
+<pre><code>
+import socket
+
+# CHANGE IP TO YOUR TARGET
+target = "192.168.1.1" #HRE
+start_port = 1
+end_port = 100 #SCAN PORTS 1 - 100
+
+print(f"\nScanning {target} from port {start_port} to {end_port}...\n")
+
+found_open = False
+
+for port in range(start_port, end_port + 1):
+sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.settimeout(0.5)
+
+result = sock.connect_ex((target, port))
+if result == 0:
+try:
+service = socket.getservbyport(port)
+except:
+service = "Unknown"
+print(f"[+] Port {port} is open ({service})")
+found_open = True
+sock.close()
+
+if not found_open:
+print("No open ports found.")
+</code></pre>
+    </div>
+    <button class="downloadBTN"><a href="../SCRIPT/SE.py">DOWNLOAD CODE</a></button>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>

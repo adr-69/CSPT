@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>PEN-TEST | ADRIAN</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>Password Cracking (Brute Force)</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is Password Cracking (Brute Force)?</h2>
+    <h2>Password Cracking (Brute Force) is a method used to find passwords by systematically trying every possible combination of characters until the correct one is found. It is one of the simplest yet slowest techniques for password attacks.</h2>
+    <br />
+    <h2>Why is it Important in Ethical Hacking and Penetration Testing?</h2>
+    <h2>In ethical hacking, brute force attacks are used to test how secure a system is against weak passwords. This method helps penetration testers identify weak login credentials and encourage the use of strong password policies. It demonstrates how vulnerable a system can be if users rely on simple, short, or commonly used passwords.</h2>
+
+    <ul class="full-list">
+      <li>Tests password strength against brute-force attempts</li>
+      <li>Identifies weak credentials in authentication systems</li>
+      <li>Demonstrates need for multi-factor authentication (MFA)</li>
+      <li>Supports the implementation of account lockout policies</li>
+    </ul>
+
+    <h2>Python Code: Brute Force Password Cracker</h2>
+    <div class="box-code">
+<pre><code>
+import itertools
+import string
+
+target_password = "ab" # The password we want to guess
+characters = string.ascii_lowercase + string.digits
+
+found = False
+
+for length in range(1, 6): # Adjust max length for deeper cracking
+for guess in itertools.product(characters, repeat=length):
+attempt = ''.join(guess)
+print(f"Trying: {attempt}")
+if attempt == target_password:
+print(f"[+] Password found: {attempt}")
+found = True
+break
+if found:
+break
+
+if not found:
+print("[-] Password not cracked.")
+</code></pre>
+    </div>
+    <button class="downloadBTN"><a href="../SCRIPT/PCB.py">DOWNLOAD CODE</a></button>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>
