@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>PEN-TEST | ADRIAN</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>CSRF Testing</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is CSRF (Cross-Site Request Forgery) Testing?</h2>
+    <h2>CSRF Testing is the process of checking whether a web application properly validates user actions to prevent unauthorized commands being performed on behalf of an authenticated user.</h2>
+    <br />
+    <h2>Why is it Important in Ethical Hacking and Penetration Testing?</h2>
+    <h2>A vulnerable site may allow attackers to trick users into making unwanted changes (like updating a password or email) without their consent. This can lead to:</h2>
+
+    <ul class="full-list">
+      <li>Account takeover</li>
+      <li>Data manipulation</li>
+      <li>Unauthorized actions performed in the background</li>
+      <li>Session abuse through social engineering</li>
+    </ul>
+
+    <h2>Proper CSRF protection ensures that every critical action requires intentional user verification.</h2>
+    <h2>Python Code: CSRF Testing</h2>
+    <div class="box-code">
+<pre><code>
+import requests
+
+# Target endpoint that performs a state-changing action (e.g., change password, update email)
+target_url = "http://example.com/change-email" # Replace with actual target
+cookies = {'sessionid': 'your-session-id'} # Replace with valid session cookie if needed
+
+# Simulated CSRF request without token
+data = {
+'email': 'attacker@example.com' # Payload you want to test
+}
+
+print("[+] Sending simulated CSRF request...")
+
+response = requests.post(target_url, data=data, cookies=cookies)
+
+# Check response for signs of success or protection
+if "email updated" in response.text.lower():
+print("[!] Potential CSRF vulnerability detected!")
+else:
+print("[-] CSRF protection might be in place or action blocked.")
+</code></pre>
+    </div>
+    <button class="downloadBTN"><a href="../SCRIPT/CSRF.py">DOWNLOAD CODE</a></button>
+    <br />
+    <h2>Disclaimer:</h2>
+    <p>This script is for educational and authorized testing only. Never use it against websites you do not own or have explicit permission to test. Unauthorized scanning or exploitation is illegal and unethical.</p>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>
