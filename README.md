@@ -18,7 +18,7 @@
 4. **Password Cracking (Brute Force)**
 5. **Web Application Scanning**
 6. **SQL Injection Testing**
-   COMING SOON
+7. Soon...
 
 ## Technologies Used
 
