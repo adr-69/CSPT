@@ -2,81 +2,83 @@ body {
     margin: 0;
     padding: 0;
     font-weight: bold;
-    color: #e0e0e0;
-    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-    font-family: 'Courier New', monospace;
+    color: white;
+    background: linear-gradient(90deg, black, #1a0000);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
 }
 
 /* Header */
 .main-header {
     text-align: center;
-    background-color: #111;
+    background-color: #1a0000;
     padding: 10px;
-    color: #00ffe7;
-    font-size: 28px;
+    color: #ff3333;
+    text-shadow: 1px 1px #800000, 0 0 3px black;
+    box-shadow: 0 0 10px #400000;
     letter-spacing: 1px;
-    box-shadow: 0px 0px 10px #00ffe7, 0px 0px 20px #004d4d;
 }
 
 /* Homepage Banner */
 .main-home {
-    padding: 30px;
+    padding: 20px;
     text-align: center;
-    font-size: 32px;
-    color: #ff0055;
-    text-shadow: 2px 2px #660033, 1px 1px white;
+    font-size: 22px;
+    color: #ff1a1a;
+    text-shadow: 2px -2px #000, -2px 2px #800000;
+    background-color: #1a0000;
+    box-shadow: 0 0 20px #000, 0 0 30px #1a0000;
 }
 
 /* Section Title */
 .main-NDM h1 {
-    color: #00ffcc;
+    color: #ff4d4d;
     text-align: center;
-    font-size: 26px;
+    font-size: 22px;
 }
 
 /* Section Button */
 .back-btn {
     display: block;
-    margin: 20px auto;
-    background: #ff0033;
+    margin: 25px auto;
+    background: #cc0000;
     color: white;
     padding: 10px 20px;
     border: none;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 6px;
     transition: 0.3s ease;
-    box-shadow: 0px 0px 10px #ff0033;
 }
 
 .back-btn:hover {
-    background: #ff3366;
-    box-shadow: 0px 0px 15px #ff0033;
+    background: #e60026;
+    box-shadow: 0 0 10px #ff1a1a;
 }
 
 /* Description Area */
 .discription-NDM {
-    padding: 30px;
-    background: #1a1a1a;
-    border-top: 2px solid #00ffcc;
-    box-shadow: inset 0 0 10px #00ffcc;
+    padding: 20px;
+    background: #0d0000;
+    border-top: 2px solid #990000;
+    box-shadow: inset 0 0 5px #800000;
 }
 
 .discription-NDM h2 {
-    color: #66ffe0;
+    color: #ff6666;
     margin: 10px 0;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 /* Unordered List Styling */
 ul.full-list {
     list-style: square;
-    margin-left: 40px;
+    margin-left: 30px;
 }
 
 ul.full-list li {
-    padding: 10px;
-    font-size: 18px;
-    color: #ffffff;
+    padding: 8px 0;
+    font-size: 16px;
+    color: white;
     transition: color 0.3s ease;
 }
 
@@ -86,62 +88,97 @@ ul.full-list li:hover {
 
 /* Code Box */
 .box-code {
-    border: 2px solid #00ffe7;
-    background-color: #0d0d0d;
-    color: #00ffcc;
-    padding: 20px;
-    margin: 30px auto;
-    font-size: 16px;
+    border: 2px solid #cc0000;
+    background-color: #0d0000;
+    color: white;
+    padding: 15px;
+    margin: 20px auto;
+    font-size: 15px;
     width: 90%;
     overflow-x: auto;
-    box-shadow: 0px 0px 10px #00ffe7;
+    box-shadow: 0 0 8px #990000;
+    font-family: 'Courier New', monospace; /* only for code blocks */
 }
 
 /* Anchor Styling */
 a {
-    color: #ffffff;
+    color: white;
     text-decoration: none;
     transition: color 0.3s ease, text-shadow 0.3s ease;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 a:hover {
-    color: #00ffcc;
-    text-shadow: 0px 0px 5px red;
+    color: #ff6666;
+    text-shadow: 0 0 4px red;
 }
 
 /* Footer */
 footer {
-    background-color: #111;
-    padding: 20px;
+    background-color: #0d0000;
+    padding: 15px;
     text-align: center;
-    color: #aaa;
-    border-top: 2px solid red;
-    font-size: 14px;
+    color: #ccc;
+    border-top: 2px solid #990000;
+    font-size: 13px;
 }
 
 footer h2 {
-    color: red;
-    margin-bottom: 10px;
+    color: #cc0000;
+    margin-bottom: 8px;
 }
 
 footer p {
-    margin: 5px 0;
+    margin: 4px 0;
 }
 
 footer a {
-    color: red;
+    color: #ff3333;
     text-decoration: underline;
 }
 
 footer a:hover {
     color: #ffcc00;
 }
+
+/* Download Button */
 .downloadBTN {
     color: white;
-    background-color: red;
+    background-color: #cc0000;
     border: none;
     padding: 10px;
-    width: 250px;
-    font-size: 25px;
+    width: 220px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.downloadBTN:hover {
+    background-color: #ff1a1a;
+    box-shadow: 0 0 8px red;
+}
+
+/* Horizontal Rule */
+hr {
+    border: 1px solid #cc0000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-home {
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    .main-NDM h1 {
+        font-size: 20px;
+    }
+
+    a, .back-btn, .downloadBTN {
+        font-size: 16px;
+    }
+
+    .box-code {
+        font-size: 14px;
+    }
 }
