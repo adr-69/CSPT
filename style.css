@@ -29,7 +29,9 @@ body {
     background-color: #1a0000;
     box-shadow: 0 0 20px #000, 0 0 30px #1a0000;
 }
-
+li  {
+    padding: 10px;
+}
 /* Section Title */
 .main-NDM h1 {
     color: #ff4d4d;
