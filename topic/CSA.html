@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>PEN-TEST | ADRIAN</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>Credential Stuffing Attack</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is a Credential Stuffing Attack?</h2>
+    <h2>A Credential Stuffing Attack is a type of cyberattack where stolen login credentials (usually obtained from a previous data breach) are used to gain unauthorized access to user accounts on various online platforms. In this attack, automated scripts are used to test large sets of usernames and passwords across multiple websites, with the hope that users have reused the same credentials across different platforms.</h2>
+    <br />
+    <h2>Why is it Important in Ethical Hacking and Penetration Testing?</h2>
+    <h2>Credential stuffing is crucial for penetration testing because it highlights:</h2>
+
+    <ul class="full-list">
+      <li>The risks of using the same credentials across multiple platforms.</li>
+      <li>The importance of strong, unique passwords for each account.</li>
+      <li>The need for mechanisms to detect and block repeated login attempts (e.g., CAPTCHA, IP blocking).</li>
+      <li>The necessity of enabling multi-factor authentication (MFA) to protect accounts.</li>
+    </ul>
+
+    <h2>Ethical hacking teams use credential stuffing simulations to identify potential weaknesses in account security systems and help organizations improve their defenses against this type of attack.</h2>
+    
+    <h2>Python Code: Credential Stuffing Simulation</h2>
+    <div class="box-code">
+<pre><code>
+# credential_stuffing_sim.py
+# Educational purpose only
+
+# Simulated valid credentials in a database
+valid_credentials = {
+"user1@example.com": "password123",
+"admin@example.com": "admin2025",
+"test@demo.com": "qwerty123"
+}
+
+# Stolen credentials (from a breached list)
+stolen_creds = [
+("user1@example.com", "password123"), # valid
+("user2@example.com", "123456"), # invalid
+("admin@example.com", "wrongpass"), # invalid
+("admin@example.com", "admin2025"), # valid
+("test@demo.com", "qwerty123"), # valid
+("unknown@fake.com", "nopass"), # invalid
+]
+
+def credential_stuffing_attack(stolen):
+print("\n[+] Starting Credential Stuffing Simulation...\n")
+for email, password in stolen:
+print(f"[*] Trying {email}:{password}...", end=' ')
+if valid_credentials.get(email) == password:
+print("[SUCCESS]")
+else:
+print("[FAILED]")
+print("\n[+] Simulation Complete.")
+
+if __name__ == "__main__":
+credential_stuffing_attack(stolen_creds)
+</code></pre>
+    <button class="downloadBTN"><a href="../SCRIPT/CSA.py">DOWNLOAD CODE</a></button>
+    </div>
+
+    <br />
+    <h2>Disclaimer:</h2>
+    <p>This method is intended for educational and authorized penetration testing only. Performing credential stuffing attacks without proper permission is illegal and unethical. Always ensure you have explicit consent before conducting such tests.</p>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>

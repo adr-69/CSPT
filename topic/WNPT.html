@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>PEN-TEST | ADRIAN</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>Wireless Network Penetration Testing</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is Wireless Network Penetration Testing?</h2>
+    <h2>Wireless Network Penetration Testing is the process of testing the security of wireless networks to identify vulnerabilities that could be exploited by attackers. The main goal is to evaluate the strength of network configurations, encryption protocols, and overall security posture of the wireless environment.</h2>
+    <br />
+    <h2>Why is it Important in Ethical Hacking and Penetration Testing?</h2>
+    <h2>In wireless network penetration testing, ethical hackers assess:</h2>
+
+    <ul class="full-list">
+      <li>Weak or easily guessed Wi-Fi passwords.</li>
+      <li>Vulnerabilities in older wireless encryption protocols (WEP, WPA).</li>
+      <li>Lack of network segmentation or secure configurations.</li>
+      <li>Possible weaknesses in the access points (APs) and client devices.</li>
+    </ul>
+
+    <h2>This helps organizations identify and mitigate risks to their networks, ensuring stronger protections for sensitive data.</h2>
+    
+    <h2>Python Code: Wireless Network Penetration Testing</h2>
+    <div class="box-code">
+<pre><code>
+# wifi_scanner.py
+# Educational use only - Requires monitor mode (e.g., wlan0mon)
+
+from scapy.all import *
+from scapy.layers.dot11 import Dot11Beacon, Dot11, Dot11Elt
+import os
+
+networks = {}
+
+def callback(packet):
+if packet.haslayer(Dot11Beacon):
+ssid = packet[Dot11Elt].info.decode(errors="ignore")
+bssid = packet[Dot11].addr2
+if bssid not in networks:
+networks[bssid] = ssid
+print(f"[+] Found Network: SSID='{ssid}' | BSSID={bssid}")
+
+def start_scan(interface):
+print(f"[*] Scanning for networks on interface: {interface} (Monitor Mode Required)")
+sniff(iface=interface, prn=callback, timeout=30)
+
+if __name__ == "__main__":
+interface = input("Enter your wireless interface (e.g., wlan0mon): ")
+try:
+start_scan(interface)
+except PermissionError:
+print("[-] Permission denied. Run this script as root (sudo).")
+except Exception as e:
+print(f"[-] Error: {e}")
+</code></pre>
+    <button class="downloadBTN"><a href="../SCRIPT/WNPT.py">DOWNLOAD CODE</a></button>
+    </div>
+
+    <br />
+    <h2>Disclaimer:</h2>
+    <p>This method is intended for educational and authorized penetration testing only. Performing wireless network penetration testing without proper permission is illegal and unethical. Always ensure you have explicit consent before conducting such tests.</p>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>
